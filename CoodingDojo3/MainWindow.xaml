@@ -11,19 +11,54 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="200"/>
         </Grid.ColumnDefinitions>
+
         <Grid.RowDefinitions>
             <RowDefinition Height="70"/>
             <RowDefinition Height="*"/>
 
         </Grid.RowDefinitions>
         <Border Margin="10" BorderBrush="Red" BorderThickness="1">
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Image Margin="10,0" Height="48" Source="Images/Warning-WF.png"/>
-                <Label Content="Überlauf Grauwasser" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" Foreground="White"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Image Margin="10,0" Height="48" Source="Images/Warning-WF.png"/>
+                    <Label Content="Überlauf Grauwasser" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" Foreground="White"/>
+                </StackPanel>
+            </Border>
+            <StackPanel Grid.Row="1">
+                <Label Content="Aktoren" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White" FontSize="18"></Label>
+                <DataGrid MinHeight="300" Margin="10" ItemsSource="{Binding Data}" AutoGenerateColumns="true">
+
+                </DataGrid>
+            <StackPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Right">
+                <Button Grid.Row="1" Content="Hinzufügen" Margin="10,10,5,5" Height="48" FontSize="18" Background="#FF020202" BorderBrush="#FFF9F9F9" Foreground="White"></Button>
+                <Button Grid.Row="1" Content="Löschen" Margin="10,10,5,5" Height="48" FontSize="18" Background="#FF020202" BorderBrush="#FFF9F9F9" Foreground="White"></Button>
             </StackPanel>
-        </Border>
-        <Label Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" Foreground="White">...tbd...</Label>
-        <Border Grid.RowSpan="2" Margin="5" Grid.Column="1" BorderThickness="1,0,0,0" BorderBrush="LightGray">
+      
+           
+
+        
+            <Label Content="Sensoren" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White" FontSize="18"></Label>
+            <DataGrid MinHeight="300" Margin="10" ItemsSource="{Binding Data}" AutoGenerateColumns="false">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Name"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Description"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Room"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Mode"></DataGridTextColumn>
+                    <DataGridTextColumn Header="ValueType"></DataGridTextColumn>
+                    <DataGridTextColumn Header=""></DataGridTextColumn>
+                    <DataGridTextColumn Header="Value"></DataGridTextColumn>
+                    <DataGridTextColumn Header="PosX"></DataGridTextColumn>
+                    <DataGridTextColumn Header="PosY"></DataGridTextColumn>
+                   
+                </DataGrid.Columns>
+            </DataGrid>
+            <StackPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Right">
+                <Button Grid.Row="2" Content="Hinzufügen" Margin="10,10,5,5" Height="48" FontSize="18" Background="#FF020202" BorderBrush="#FFF9F9F9" Foreground="White"></Button>
+                <Button Grid.Row="2" Content="Löschen" Margin="10,10,5,5" Height="48" FontSize="18" Background="#FF020202" BorderBrush="#FFF9F9F9" Foreground="White"></Button>
+            </StackPanel>
+
+        </StackPanel>
+        <Border Grid.RowSpan="3" Margin="4.667,5,5.333,4.667" Grid.Column="1" BorderThickness="1,0,0,0" BorderBrush="LightGray">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>

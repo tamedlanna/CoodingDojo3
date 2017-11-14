@@ -120,5 +120,10 @@
     <Resource Include="Images\Weather-01.png" />
     <Resource Include="Images\Wind.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Converters\" />
+    <Folder Include="Simulation\" />
+    <Folder Include="ViewModel\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
