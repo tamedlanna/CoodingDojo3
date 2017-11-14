@@ -69,6 +69,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converters\StringToBrushConverter.cs" />
     <Compile Include="Simulation\Simulator.cs" />
     <Compile Include="ViewModel\ItemVm.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
@@ -140,9 +141,7 @@
     <Resource Include="Images\Weather-01.png" />
     <Resource Include="Images\Wind.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Converters\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\..\CD3\CD3\Shared\Shared.csproj">
       <Project>{1938FF64-FC06-457F-B245-C60D3FF48B2E}</Project>
