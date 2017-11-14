@@ -43,10 +43,29 @@
                     <DataGridTextColumn Header="Name"></DataGridTextColumn>
                     <DataGridTextColumn Header="Description"></DataGridTextColumn>
                     <DataGridTextColumn Header="Room"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Mode"></DataGridTextColumn>
+                    <DataGridTemplateColumn Header="Mode">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label></Label>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                        <DataGridTemplateColumn.CellEditingTemplate>
+                            <DataTemplate>
+                                <ComboBox></ComboBox>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellEditingTemplate>
+                    </DataGridTemplateColumn>
                     <DataGridTextColumn Header="ValueType"></DataGridTextColumn>
-                    <DataGridTextColumn Header=""></DataGridTextColumn>
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Ellipse></Ellipse>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                   
                     <DataGridTextColumn Header="Value"></DataGridTextColumn>
+                    
                     <DataGridTextColumn Header="PosX"></DataGridTextColumn>
                     <DataGridTextColumn Header="PosY"></DataGridTextColumn>
                    
