@@ -73,7 +73,7 @@ namespace CoodingDojo3.ViewModel
 
         private void LoadData()
         {
-            Simulator sim = new Simulator(modelItems);
+            Simulator sim = new Simulator(ModellItem);
             foreach (var item in sim.Items)
             {
                 if (item.ItemType.Equals(typeof(ISensor)))
@@ -93,5 +93,4 @@ namespace CoodingDojo3.ViewModel
         }
     }
 }
-    }
-}
+    
