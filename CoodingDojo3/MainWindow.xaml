@@ -4,8 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CoodingDojo3"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="960" Width="1280" Background="Black">
+        xmlns:Converters="clr-namespace:CoodingDojo3.Converters"
+        mc:Ignorable="d" DataContext="{Binding Source= {StaticResource Locator}, Path=Main}"
+        Title="MainWindow"  Height="960" Width="1280" Background="Black">
+    <Window.Resources>
+        <Converters:StringToBrushConverter x:Key="con"></Converters:StringToBrushConverter>
+    </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -25,7 +29,7 @@
             </Border>
             <StackPanel Grid.Row="1">
                 <Label Content="Aktoren" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White" FontSize="18"></Label>
-                <DataGrid MinHeight="300" Margin="10" ItemsSource="{Binding Data}" AutoGenerateColumns="true">
+                <DataGrid MinHeight="300" Margin="10" ItemsSource="{Binding ActorList}" AutoGenerateColumns="true">
 
                 </DataGrid>
             <StackPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Right">
@@ -37,37 +41,37 @@
 
         
             <Label Content="Sensoren" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White" FontSize="18"></Label>
-            <DataGrid MinHeight="300" Margin="10" ItemsSource="{Binding Data}" AutoGenerateColumns="false">
+            <DataGrid MinHeight="300" Margin="10" ItemsSource="{Binding SensorList}" AutoGenerateColumns="false">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="ID"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Name"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Description"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Room"></DataGridTextColumn>
+                    <DataGridTextColumn Header="ID" Binding="{Binding ID}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Name"  Binding="{Binding Name}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Description"  Binding="{Binding Description}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Room"  Binding="{Binding Room}"></DataGridTextColumn>
                     <DataGridTemplateColumn Header="Mode">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Label></Label>
+                                <Label Content="{Binding Mode}" Height="30"></Label>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                         <DataGridTemplateColumn.CellEditingTemplate>
                             <DataTemplate>
-                                <ComboBox></ComboBox>
+                                <ComboBox SelectedItem="{Binding Mode, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding DataContext.ModeSelectionList}"></ComboBox>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellEditingTemplate>
                     </DataGridTemplateColumn>
-                    <DataGridTextColumn Header="ValueType"></DataGridTextColumn>
+                    <DataGridTextColumn Binding="{Binding ValueType}" Header="ValueType"></DataGridTextColumn>
                     <DataGridTemplateColumn>
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Ellipse></Ellipse>
+                                <Ellipse Height="25" Width="25" Fill="{Binding Mode, Converter={StaticResource con}}"></Ellipse>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
                    
-                    <DataGridTextColumn Header="Value"></DataGridTextColumn>
+                    <DataGridTextColumn Binding="{Binding Value}" Header="Value"></DataGridTextColumn>
                     
-                    <DataGridTextColumn Header="PosX"></DataGridTextColumn>
-                    <DataGridTextColumn Header="PosY"></DataGridTextColumn>
+                    <DataGridTextColumn Binding="{Binding PosX}" Header="PosX"></DataGridTextColumn>
+                    <DataGridTextColumn Binding="{Binding PosY}" Header="PosY"></DataGridTextColumn>
                    
                 </DataGrid.Columns>
             </DataGrid>
@@ -156,8 +160,8 @@
                         <Border BorderThickness="0,0,0,1" BorderBrush="LightGray">
                             <StackPanel Orientation="Vertical" Margin="0,0,0,10">
                                 <!--<Image Margin="10,10,5,10" Height="48" Source="Images/clock-01.png"/>-->
-                                <Label Content="12:34" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" Foreground="White"/>
-                                <Label Content="25.09.2017" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" Foreground="White"/>
+                                <Label Content="{Binding CurrentTime}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" Foreground="White"/>
+                                <Label Content="{Binding CurrentDate}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" Foreground="White"/>
 
                             </StackPanel>
                         </Border>

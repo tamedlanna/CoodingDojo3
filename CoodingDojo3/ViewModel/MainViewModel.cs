@@ -15,9 +15,9 @@ namespace CoodingDojo3.ViewModel
     public class MainViewModel : ViewModelBase
     {
         private Simulator sim;
-        private List<ItemVm> ModellItem = new List<ItemVm>();
-        private ObservableCollection<ItemVm> SensorList { get; set; }
-        private ObservableCollection<ItemVm> ActorList { get; set; }
+        private List<ItemVm> modelItems = new List<ItemVm>();
+        public ObservableCollection<ItemVm> SensorList { get; set; }
+        public ObservableCollection<ItemVm> ActorList { get; set; }
 
         public RelayCommand SensorAddBtnClickCmd { get; set; }
         public RelayCommand SensorDelBttnCmd { get; set; }
@@ -29,14 +29,14 @@ namespace CoodingDojo3.ViewModel
         public ObservableCollection<string> ModeSelectionList { get; private set; }
 
         public string CurrentTime {
-            get { return CurrentTime; }
-            set { CurrentTime = value; RaisePropertyChanged(); }
+            get { return currentTime; }
+            set { currentTime = value; RaisePropertyChanged(); }
         }
 
         public string CurrentDate
         {
-            get { return CurrentDate; }
-            set { CurrentDate= value; RaisePropertyChanged(); }
+            get { return currentDate; }
+            set { currentDate= value; RaisePropertyChanged(); }
         }
         public MainViewModel()
         {
@@ -73,7 +73,7 @@ namespace CoodingDojo3.ViewModel
 
         private void LoadData()
         {
-            Simulator sim = new Simulator(ModellItem);
+            Simulator sim = new Simulator(modelItems);
             foreach (var item in sim.Items)
             {
                 if (item.ItemType.Equals(typeof(ISensor)))
